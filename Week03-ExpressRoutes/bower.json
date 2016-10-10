@@ -1,0 +1,25 @@
+{
+  "name": "Week04-ExpressRoutes",
+  "description": "Learn about routes",
+  "main": "",
+  "authors": [
+    "Hyejin Jun <hyejin.jun@bellevuecollge.edu>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "express",
+    "routes"
+  ],
+  "homepage": "https://github.com/hyejinstar/isit320-hyejin-2016",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}
