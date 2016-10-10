@@ -4,8 +4,7 @@
   "description": "\"Learn about couchdb views\"",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "node jasmine-runner.js"
+    "start": "node server.js"
   },
   "keywords": [
     "JavaScript",
