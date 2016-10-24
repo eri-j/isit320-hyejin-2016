@@ -1,0 +1,8 @@
+{
+    "preset": "google",
+    "validateIndentation": 4,
+    "excludeFiles": ["**/node_modules/**", "**/components/**", "**/bower_components/**",
+        "**/angular.js", "**/angular-route.js", "**/jquery-2.1.0.min.js"],
+    "requireCamelCaseOrUpperCaseIdentifiers": false,
+    "maximumLineLength": 120
+}
