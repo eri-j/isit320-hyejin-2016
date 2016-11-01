@@ -8,16 +8,15 @@ var router = express.Router();
 var fs = require('fs');
 
 var servers = [
-    'http://168.156.47.110:5984',
+    'http://168.156.47.119:5984',
     'http://127.0.0.1:5984',
     'http://192.168.2.19:5984'
 ];
 var serverIndex = 0;
-// var nano = require('nano')(servers[serverIndex]);
-var nano = require('nano')('http://168.156.47.110:5984');
+var nano = require('nano')(servers[serverIndex]);
 
-var dbName = 'couch_views';
-var docName = 'phones';
+var dbName = 'game_data_jun';
+var docName = 'default_document_name';
 
 var insert = require('./CouchInsert')(router, nano, dbName);
 var views = require('./CouchViews')(router, nano, dbName);

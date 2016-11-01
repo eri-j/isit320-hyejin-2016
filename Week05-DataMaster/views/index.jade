@@ -10,38 +10,23 @@ block content
     li 
       a(href='/#/databaseName') Get current Database Name and all names
     li
-      a(href='/#/deleteDb') DeleteDb
-    li
       a(href='/#/createDb') CreateDb
     li
-      a(href='/#/insertStatesBulk') Insert States in Bulk
+      a(href='/#/deleteDb') DeleteDb
+    br
     li
-      a(href='/#/insertStatesOneDoc') Insert States as one document
+      a(href='/#/insertnpcsBulk') Insert npcs in Bulk
     li
-      a(href="/#/designDoc") Design Doc
+      a(href='/#/insertnpcsOneDoc') Insert npcs as one document
+    li
+      a(href="/#/designDoc") Insert Design Doc
+    br
     li
       a(href="/#/readOne") Read One Doc
     li
-      a(href="/#/viewOneDoc") View States from one document
+      a(href="/#/viewOneDoc") View npcs from one document
     li
-      a(href="/#/viewBulk") Angular View Bulk Doc
-    li
-      a(href="/#/viewBulkStatesCampital") Angular View States Capital Bulk
-    
-  h1 Should we template on both ends?
-  
-  p
-    | In the examples below we use templating on the server side with Handlebars.
-    | Handlebars is a great library, but some say we should not mix it with Angular as I 
-    | do below. When we do, the app <strong>may</strong> hang after these calls. 
-    | If you have problems, use the technique shown in "Angular View Bulk Doc" 
-    | and "Angular View States Capital" above. 
-  ul 
-    li
-      a(href="/viewBulkTemplate?designDoc=states&view=docBulk") Template States Bulk
-    li
-      a(href="/viewStateCapitalTemplate?designDoc=states&view=docStateCapital") Template State Capital
-
+      a(href="/#/viewBulk") View NPCS Bulk documents
 
   p {{debug}}
 

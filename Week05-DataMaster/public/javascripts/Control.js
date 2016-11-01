@@ -7,7 +7,15 @@ var myModule = angular.module('myModule', ['ngRoute']);
 var queryController = myModule.controller('QueryController',
     function($scope, result) {
         'use strict';
-        $scope.result = result;
+        if (result.ok) {
+            $scope.result = "It worked";
+        } else if (result.requestFailed) {
+            $scope.result = JSON.stringify(result.requestFailed, null, 4);
+        } else {
+            $scope.result = result;
+        }
+
+        $scope.docs = result.docs;
     });
 
 function runQuery(query, $q) {
@@ -16,9 +24,11 @@ function runQuery(query, $q) {
     $.getJSON(query, function(json) {
         defers.resolve(json);
     }).fail(function(jqxhr, textStatus, error) {
-        var err = textStatus + ', ' + error;
+        var response = JSON.parse(jqxhr.responseText);
+        response.genericError = error;
+        response.statusText = textStatus;
         defers.resolve({
-            'Request Failed': err
+            'requestFailed': response
         });
     });
     return defers.promise;
@@ -34,14 +44,14 @@ queryController.create = function($q) {
     return runQuery('/createDb', $q);
 };
 
-queryController.statesBulk = function($q) {
+queryController.npcsBulk = function($q) {
     'use strict';
-    return runQuery('/insertBulk?fileName=States.json', $q);
+    return runQuery('/insertBulk?fileName=npcs.json', $q);
 };
 
-queryController.statesOneDoc = function($q) {
+queryController.npcsOneDoc = function($q) {
     'use strict';
-    return runQuery('/insertFile?fileName=States.json&id=oneDoc', $q);
+    return runQuery('/insertFile?fileName=npcs.json&id=oneDoc', $q);
 };
 
 queryController.design = function($q) {
@@ -51,22 +61,22 @@ queryController.design = function($q) {
 
 queryController.viewBulk = function($q) {
     'use strict';
-    return runQuery('/viewBulk?designDoc=states&view=docBulk', $q);
+    return runQuery('/viewBulk?designDoc=npcs&view=docBulk', $q);
 };
 
 queryController.readOne = function($q) {
     'use strict';
-    return runQuery('/read?docName=statesDoc', $q);
+    return runQuery('/read?docName=npcsDoc', $q);
 };
 
 queryController.viewOneDoc = function($q) {
     'use strict';
-    return runQuery('/viewOneDoc?designDoc=states&view=docStatesDoc', $q);
+    return runQuery('/viewOneDoc?designDoc=npcs&view=docNpcsDoc', $q);
 };
 
 queryController.viewBulkAngular = function($q) {
     'use strict';
-    return runQuery('/viewStateCapitalAngular?designDoc=states&view=docStateCapital', $q);
+    return runQuery('/viewnpcCapitalAngular?designDoc=npcs&view=docnpcCapital', $q);
 };
 
 var nameController = myModule.controller('NameController', function($scope, databaseName, allDbs) {
@@ -106,17 +116,17 @@ myModule.config(function($routeProvider) {
         resolve: {
             result: queryController.create
         }
-    }).when('/insertStatesBulk', {
-        templateUrl: 'templates/States.html',
+    }).when('/insertnpcsBulk', {
+        templateUrl: 'templates/npcs.html',
         controller: 'QueryController',
         resolve: {
-            result: queryController.statesBulk
+            result: queryController.npcsBulk
         }
-    }).when('/insertStatesOneDoc', {
-        templateUrl: 'templates/States.html',
+    }).when('/insertnpcsOneDoc', {
+        templateUrl: 'templates/npcs.html',
         controller: 'QueryController',
         resolve: {
-            result: queryController.statesOneDoc
+            result: queryController.npcsOneDoc
         }
     }).when('/designDoc', {
         templateUrl: 'templates/QueryView.html',
@@ -142,7 +152,7 @@ myModule.config(function($routeProvider) {
         resolve: {
             result: queryController.viewOneDoc
         }
-    }).when('/viewBulkStatesCampital', {
+    }).when('/viewBulknpcsCapital', {
         templateUrl: 'templates/QueryView.html',
         controller: 'QueryController',
         resolve: {

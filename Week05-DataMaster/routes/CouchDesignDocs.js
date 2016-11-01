@@ -4,6 +4,7 @@
 
 function designDocs(router, nano, dbName) {
     'use strict';
+
     var firstAndLast = function(doc) {
         if (doc.firstName && doc.lastName) {
             var name = doc.firstName + ' ' + doc.lastName;
@@ -22,8 +23,10 @@ function designDocs(router, nano, dbName) {
         emit(doc._id, doc);
     };
 
-    var docBulk = function(doc) {
-        emit(doc._id, doc.name);
+    var npcsBulk = function(doc) {
+        if (doc._id !== 'npcsDoc') {
+            emit(doc._id, doc);
+        }
     };
 
     var docStateCapital = function(doc) {
@@ -33,16 +36,17 @@ function designDocs(router, nano, dbName) {
         });
     };
 
-    var docStatesDoc = function(doc) {
-        if (doc._id === 'statesDoc') {
+    var docNpcsDoc = function(doc) {
+        if (doc._id === 'npcsDoc') {
             var data = [];
-            doc.docs.forEach(function(state) {
+            doc.docs.forEach(function(npc) {
                 data.push({
-                    'name': state.name,
-                    'capital': state.capital
+                    'npc_name': npc.npc_name,
+                    'description': npc.description,
+                    'value': npc.value
                 });
             });
-            emit(doc.docs[0].abbreviation, data);
+            emit(doc._id, data);
         }
     };
 
@@ -78,7 +82,7 @@ function designDocs(router, nano, dbName) {
     }*/
 
     function createDesignDocument(designDocument, designName, response) {
-        var nanoDb = nano.db.use(dbName);
+        var nanoDb = nano.db.use(designName);
         nanoDb.insert(designDocument, designName, function(error, body) {
             if (!error) {
                 console.log(body);
@@ -95,20 +99,17 @@ function designDocs(router, nano, dbName) {
     router.get('/designDoc', function(request, response) {
         console.log('Design Doc Called');
 
-        var designName = '_design/states';
+        var designName = '_design/npcs';
         var designDocument = {
             'views': {
-                'docBulk': {
-                    'map': docBulk
+                'npcsBulk': {
+                    'map': npcsBulk
                 },
                 'docIdDoc': {
                     'map': docIdDoc
                 },
-                'docStateCapital': {
-                    'map': docStateCapital
-                },
-                'docStatesDoc': {
-                    'map': docStatesDoc
+                'docNpcsDoc': {
+                    'map': docNpcsDoc
                 }
                 /*,
                 				'viewStatesDoc' : {
