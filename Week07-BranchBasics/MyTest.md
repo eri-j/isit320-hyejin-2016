@@ -1,9 +1,7 @@
-## New Test Inspection
-
 # My Test
 
 This is my test document.
 
-## Add More
+## New Test Section
 
-This is made in the test branch
+This part of the document was added in the test branch
