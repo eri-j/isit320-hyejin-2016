@@ -1,5 +1,3 @@
-## New Test Insurrection
-
 # My Test
 
 This is my test document.
