@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  div.container-fluid
+    div.col-lg-4.text-center
+      h1= title
+      h2.text-muted= name
+
+      div
+        a(href='/facebook/login').btn.btn-primary.col-lg-12 Log In with Facebook
+      div
+        a(href="/facebook/profile").btn.btn-primary.col-lg-12 Facebook Profile
+
+      div
+        a(href='/auth/google').btn.btn-primary.col-lg-12 Log In Google
+      div
+        a(href='/auth/account').btn.btn-primary.col-lg-12 Google Account
+
+      div
+        a(href='/logout').btn.btn-primary.col-lg-12 Logout
+
+      button#status.btn.btn-danger.col-lg-12 Status
+
+    div.col-lg-4
+        pre#report.col-lg-12 <*)))))><{ A fish
+        pre#debug.col-lg-12
