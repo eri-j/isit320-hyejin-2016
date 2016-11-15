@@ -4,11 +4,15 @@ block content
   h1= title
   p Welcome to #{title}
 
-  button#read Read
-  button#readJson ReadJson
-  button#add Add
+  div
+    input#operatorA(type='number', value='2')
+  div
+    input#operatorB(type='number', value='3')
 
-  input#operatorA(type='number', value='2')
-  input#operatorB(type='number', value='3')
+  div
+    button.btn.btn-primary#read Read
+    button.btn.btn-primary#readJson ReadJson
+    button.btn.btn-primary#add Add
 
-  pre#display
+  div
+    pre#display
