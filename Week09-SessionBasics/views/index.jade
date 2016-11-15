@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  div
+    button.btn.btn-primary#page01 Page01
+    button.btn.btn-primary#page02 Page02
+    button.btn.btn-primary#page03 Page03
+
+  div
+    button.btn.btn-primary#viewPage01 View Page01 Hits
+    button.btn.btn-primary#viewPage02 View Page02 Hits
+
+    pre#display
