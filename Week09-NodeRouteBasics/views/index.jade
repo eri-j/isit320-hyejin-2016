@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  div
+    input#lengthInput(type='text')
+  div
+    button#feetToMile.btn.btn-primary.btn-lg Feet to Miles
+    button#mileToFeet.btn.btn-primary.btn-lg Miles to Feet
+    button#getCircumference.btn.btn-primary.btn-lg Calculate Circumference
+
+  pre#debug
