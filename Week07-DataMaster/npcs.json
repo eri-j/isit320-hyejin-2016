@@ -1,0 +1,65 @@
+[
+  {
+    "npc_id": 1,
+    "npc_name": "Suzie",
+    "description": "A tall red head with freckles",
+    "color": "#00FFFF",
+    "value": 15,
+    "question": "Is 2 + 2 equal to 4?",
+    "answer": true
+  },
+  {
+    "npc_id": 2,
+    "npc_name": "Tom",
+    "description": "A strong bald man with green eyes",
+    "color": "#0000FF",
+    "value": 15,
+    "question": "Is 5 + 2 equal to 10?",
+    "answer": false
+  },
+  {
+    "npc_id": 3,
+    "npc_name": "Sylvia",
+    "description": "A girl with thick black poofy hair",
+    "color": "#00AAFF",
+    "value": 6,
+    "question": "Can I be lazy?",
+    "answer": true
+  },
+  {
+    "npc_id": 4,
+    "npc_name": "Chang",
+    "description": "A skinny chinese girl with round eyes",
+    "color": "#00FFAA",
+    "value": 5,
+    "question": "Can I sleep more?",
+    "answer": true
+  },
+  {
+    "npc_id": 5,
+    "npc_name": "Connor",
+    "description": "A guy with poofy brown hair & glasses",
+    "color": "#00FF00",
+    "value": 12,
+    "question": "What's black & white & red all over?",
+    "answer": "A sunburnt penguin :D.."
+  },
+  {
+    "npc_id": 6,
+    "npc_name": "hyejintokki",
+    "description": "A fat asian girl with glasses",
+    "color": "#FFFF00",
+    "value": 9,
+    "question": "Can I eat more?",
+    "answer": "Beats work! :D"
+  },
+  {
+    "npc_id": 7,
+    "npc_name": "brandon",
+    "description": "A fat asian girl with glasses",
+    "color": "#FFFFFF",
+    "value": 3,
+    "question": "Can I be any more of a geeky nerd?",
+    "answer": "NEVAR!!!!!"
+  }
+]

@@ -1,0 +1,48 @@
+extends layout
+
+block content
+
+    h1= title
+    p Welcome to #{title}
+
+    br
+
+    // Display
+    div.panel.panel-default
+        div.panel-heading Display
+        div.panel-body
+            span#display
+
+    div.form-group
+        button#previous.btn.btn-danger Previous NPC
+        button#next.btn.btn-primary Next NPC
+        button#deleteNpc.btn.btn-warning Delete Npc
+    div.form-group
+
+
+    div.form-group
+        // Create Database
+        button#createDB.btn.btn-primary Create Database
+        // Delete Database
+        button#deleteDB.btn.btn-danger Delete Database
+        // Insert Database
+        button#insertBulk.btn.btn-primary Insert Bulk
+        // Read Database
+        button#readDB.btn.btn-danger Read Database
+
+    // Input New NPC
+    //div.form-group
+    //    label NPC Name
+    //    input#npcName(type='text').form-control
+    //div.form-group
+    //    label NPC ID
+    //    input#npcValue(type='text').form-control
+    //div.form-group
+    //    label NPC Color
+    //    input#npcColor(type='text').form-control
+    //div.form-group
+    //    label NPC Question
+    //    input#npcQuestion(type='text').form-control
+    //div.form-group
+    //    label NPC Answer
+    //    input#npcAnswer(type='text').form-control
