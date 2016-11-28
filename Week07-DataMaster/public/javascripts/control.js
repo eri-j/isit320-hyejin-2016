@@ -5,6 +5,7 @@ $(document).ready(function () {
     var npcData;
     var dataIndex = 0;
     var displaySpan = $('#display');
+    var displaySpanId = $('#displayId');
 
     $('#previous').click(function () {
         display(npcData[--dataIndex]);
@@ -44,6 +45,7 @@ $(document).ready(function () {
     }
 
     function display(output) {
+        displaySpanId.html();
         displaySpan.html(JSON.stringify(output, null, 4));
     }
 
