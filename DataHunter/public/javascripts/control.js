@@ -1,12 +1,13 @@
 /* globals define: true, THREE:true */
 define(['floor', 'PointerLockControls', 'PointerLockSetup', 'Collisions', 'Npcs'],
-    function(Floor, PointerLockControls, PointerLockSetup, Collisions, npcs) {
+    function(Floor, PointerLockControls, PointerLockSetup, Collisions, Npcs) {
         'use strict';
 
         var scene = null;
         var camera = null;
         var collisions;
         var cubes = [];
+        var npcs = null;
         var npcList = [];
         var size = 20;
         var raycaster;
@@ -59,7 +60,7 @@ define(['floor', 'PointerLockControls', 'PointerLockSetup', 'Collisions', 'Npcs'
             floor.drawFloor(scene);
             collisions = new Collisions(THREE);
             npcs = new Npcs(THREE);
-            npcs.loadNPC(scene, camera, wireFrame);
+            npcs.loadNpc(scene, camera, wireFrame);
             console.log(npcs);
 
             raycaster = new THREE.Raycaster(new THREE.Vector3(),

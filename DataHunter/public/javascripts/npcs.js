@@ -27,13 +27,13 @@ define(function() {
         return sphere;
     };
 
-    Npcs.prototype.loadNPC = function(scene, camera, wireFrame) {
+    Npcs.prototype.loadNpc = function(scene, camera, wireFrame) {
         var test = this;
         $.getJSON('NPC000.json', function(result) {
             for (var i = 0; i < result.length; i++) {
                 for (var j = 0; j < result.length; j++) {
                     if (result[i][j] > 0) {
-                        test.createNPC(scene, camera, wireFrame, i * size, -(j * size));
+                        test.createNpc(scene, camera, wireFrame, i * size, -(j * size));
                     }
                 }
             }
