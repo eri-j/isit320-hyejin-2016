@@ -3,6 +3,6 @@ var Score = {
 };
 
 var mainCharacter = {
-    name: "Robin",
+    name: 'Robin',
     value: 15
 };

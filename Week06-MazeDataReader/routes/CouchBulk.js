@@ -41,7 +41,7 @@ function couchBulk(router, nano, dbName, server) {
     router.get('/insertBulk', function(request, response) {
         console.log('bulk data');
         var record = fs.readFile(request.query.fileName, 'utf8', function(err,
-                                                                          json) {
+            json) {
             console.log('Reading file');
             console.log(json);
             putBulkData(JSON.parse(json), response);

@@ -221,8 +221,8 @@ define(['floor', 'PointerLockControls', 'PointerLockSetup'],
 
             var loader = new THREE.TextureLoader();
 
-            if(!crateImage) {
-                crateImage = loader.load('/images/crate.jpg')
+            if (!crateImage) {
+                crateImage = loader.load('/images/crate.jpg');
             }
 
             var material = new THREE.MeshLambertMaterial({
@@ -254,7 +254,7 @@ define(['floor', 'PointerLockControls', 'PointerLockSetup'],
                 for (var i = 0; i < grid.length; i++) {
                     console.log(grid[i]);
                     for (var j = 0; j < grid[i].length; j++) {
-                        if (grid[j][i] != 0) {
+                        if (grid[j][i] !== 0) {
                             npcs.push([j, i]);
                             addSphere(scene, camera, wireFrame, size, size * -6);
                         }
@@ -268,9 +268,11 @@ define(['floor', 'PointerLockControls', 'PointerLockSetup'],
         function readDatabase() {
             $.getJSON('/read?docName=npcsDoc', function(data) {
                 console.log(JSON.stringify(data.docs, null, 4));
-                }).fail(function (jqxhr, textStatus, error) {
-                var err = textStatus + ", " + error;
-                console.log({"Request Failed": err});
+            }).fail(function(jqxhr, textStatus, error) {
+                var err = textStatus + ', ' + error;
+                console.log({
+                    'Request Failed': err
+                });
                 var response = JSON.parse(jqxhr.responseText);
                 var responseValue = JSON.stringify(response, null, 4);
                 console.log(responseValue);
