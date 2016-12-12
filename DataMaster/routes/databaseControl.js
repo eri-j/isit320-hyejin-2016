@@ -8,16 +8,19 @@ var dbName = 'game_data_jun';
 var nanoDb = require('nano')(servers[1]);
 
 function createDatabase(callback) {
+    'use strict';
     console.log('CreateDatabase called');
     nanoDb.db.create(dbName, callback);
 }
 
 function deleteDatabase(callback) {
+    'use strict';
     console.log('DeleteDatabase called');
     nanoDb.db.destroy(dbName, callback);
 }
 
 function readDatabase(callback) {
+    'use strict';
     console.log('ReadDatabase called');
 
     var database = nanoDb.db.use(dbName);
@@ -29,6 +32,7 @@ function readDatabase(callback) {
 }
 
 function insertBulk(callback) {
+    'use strict';
     console.log('InsertBulk called');
 
     var npcData = require('../npcs.json');
@@ -37,13 +41,13 @@ function insertBulk(callback) {
 
     for (var x in npcData) {
         var currentNpc = npcData[x];
-        insert(currentNpc, function () {
+        insert(currentNpc, function() {
             expectedInserts--;
 
             if (expectedInserts === 0) {
                 callback({
                     result: 'ok'
-                })
+                });
             }
 
         });
@@ -52,12 +56,12 @@ function insertBulk(callback) {
 }
 
 function deleteNpc(npcId, callback) {
-
+    'use strict';
     var database = nanoDb.db.use(dbName);
 
     database.list({
         include_docs: true
-    }, function (err, result) {
+    }, function(err, result) {
 
         for (var x in result.rows) {
 
@@ -76,6 +80,7 @@ function deleteNpc(npcId, callback) {
 }
 
 function insert(data, callback) {
+    'use strict';
     var database = nanoDb.db.use(dbName);
     database.insert(data, callback);
 }

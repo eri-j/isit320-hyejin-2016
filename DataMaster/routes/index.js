@@ -3,12 +3,16 @@ var router = express.Router();
 var databaseControl = require('./databaseControl');
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-    res.render('index', {title: 'Week07-DataMaster'});
+router.get('/', function(req, res, next) {
+    'use strict';
+    res.render('index', {
+        title: 'Week07-DataMaster'
+    });
 });
 
-router.get('/create', function (req, res) {
-    databaseControl.createDatabase(function (err, result) {
+router.get('/create', function(req, res) {
+    'use strict';
+    databaseControl.createDatabase(function(err, result) {
         if (err) {
             res.send(err);
         } else {
@@ -18,8 +22,9 @@ router.get('/create', function (req, res) {
     });
 });
 
-router.get('/delete', function (req, res) {
-    databaseControl.deleteDatabase(function (err, result) {
+router.get('/delete', function(req, res) {
+    'use strict';
+    databaseControl.deleteDatabase(function(err, result) {
         if (err) {
             res.send(err);
         } else {
@@ -29,8 +34,9 @@ router.get('/delete', function (req, res) {
     });
 });
 
-router.get('/read', function (req, res) {
-    databaseControl.readDatabase(function (err, result) {
+router.get('/read', function(req, res) {
+    'use strict';
+    databaseControl.readDatabase(function(err, result) {
         if (err) {
             res.send(err);
         } else {
@@ -39,8 +45,9 @@ router.get('/read', function (req, res) {
     });
 });
 
-router.get('/insertBulk', function (req, res) {
-    databaseControl.insertBulk(function (err, result) {
+router.get('/insertBulk', function(req, res) {
+    'use strict';
+    databaseControl.insertBulk(function(err, result) {
         if (err) {
             res.send(err);
         } else {
@@ -50,16 +57,16 @@ router.get('/insertBulk', function (req, res) {
     });
 });
 
-router.get('/deleteNpc/:id', function (req, res) {
-
-    databaseControl.deleteNpc(req.params.id, function (err, result) {
+router.get('/deleteNpc/:id', function(req, res) {
+    'use strict';
+    databaseControl.deleteNpc(req.params.id, function(err, result) {
         if (err) {
             res.send(err);
         } else {
             result.methodName = 'deleteNpc';
             res.send(result);
         }
-    })
+    });
 
 });
 

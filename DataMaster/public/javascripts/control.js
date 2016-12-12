@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
     'use strict';
 
     console.log('Control loaded');
@@ -7,39 +7,39 @@ $(document).ready(function () {
     var displaySpan = $('#display');
     var displaySpanId = $('#displayId');
 
-    $('#previous').click(function () {
+    $('#previous').click(function() {
         display(npcData[--dataIndex]);
     });
 
-    $('#next').click(function () {
+    $('#next').click(function() {
         display(npcData[++dataIndex]);
     });
 
-    $('#deleteNpc').click(function () {
+    $('#deleteNpc').click(function() {
         displayPath('/deleteNpc/' + npcData[dataIndex].doc.npc_id);
     });
 
-    $('#createDB').click(function () {
+    $('#createDB').click(function() {
         displayPath('/create');
     });
 
-    $('#deleteDB').click(function () {
+    $('#deleteDB').click(function() {
         displayPath('/delete');
     });
 
-    $('#insertBulk').click(function () {
+    $('#insertBulk').click(function() {
         displayPath('/insertBulk');
     });
 
-    $('#readDB').click(function () {
-        $.getJSON('/read', function (result) {
+    $('#readDB').click(function() {
+        $.getJSON('/read', function(result) {
             npcData = result;
             display(npcData[dataIndex]);
         });
     });
 
     function displayPath(path) {
-        $.getJSON(path, function (result) {
+        $.getJSON(path, function(result) {
             display(result);
         });
     }
