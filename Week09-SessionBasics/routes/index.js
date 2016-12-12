@@ -20,7 +20,6 @@ router.get('/', routeParamMiddleware, function(req, res, next) {
     });
 });
 
-
 var pageReport = function(request, response) {
     'use strict';
     var previousPage = '';

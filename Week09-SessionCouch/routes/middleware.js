@@ -59,7 +59,6 @@ var couchStore = new ConnectCouchDB({
 
 /************ end couch session ***********/
 
-
 router.use(session({
     genid: function(req) {
         'use strict';

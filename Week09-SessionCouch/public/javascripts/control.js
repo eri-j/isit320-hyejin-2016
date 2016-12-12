@@ -82,9 +82,8 @@ $(document).ready(function() {
     }
 
     var queryController = function(result) {
-        'use strict';
         if (result.ok) {
-            result = "It worked";
+            result = 'It worked';
         } else if (result.requestFailed) {
             result = JSON.stringify(result.requestFailed, null, 4);
         } else {
@@ -95,7 +94,6 @@ $(document).ready(function() {
     };
 
     function runQuery(query, $q) {
-        'use strict';
         var defers = $q.defer();
         $.getJSON(query, function(json) {
             defers.resolve(json);
@@ -111,7 +109,6 @@ $(document).ready(function() {
     }
 
     queryController.design = function($q) {
-        'use strict';
         return runQuery('/designDoc', $q);
     };
 
@@ -146,6 +143,6 @@ $(document).ready(function() {
         runQuery('/designDoc');
     });
     $('#sessionView').click(function() {
-        showPage('/viewSessions?designDoc=elf-session&view=elf-sessions')
+        showPage('/viewSessions?designDoc=elf-session&view=elf-sessions');
     });
 });
