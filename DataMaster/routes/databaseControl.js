@@ -2,7 +2,7 @@
  * Created by bcuser on 11/22/16.
  */
 
-var servers = ['http://192.168.2.19:5984', 'http://168.156.47.142:5984'];
+var servers = ['http://192.168.2.19:5984', 'http://35.165.124.2:5984'];
 var dbName = 'game_data_jun';
 
 var nanoDb = require('nano')(servers[1]);
