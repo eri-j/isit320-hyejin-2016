@@ -177,7 +177,7 @@ define(['floor', 'PointerLockControls', 'PointerLockSetup', 'Collisions', 'Npcs'
              color : 0x00ffff,
              wireframe : wireFrame
              });*/
-
+//comment
             var loader = new THREE.TextureLoader();
 
             if (!crateImage) {
