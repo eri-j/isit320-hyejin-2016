@@ -14,6 +14,7 @@ define(['floor', 'PointerLockControls', 'PointerLockSetup', 'Collisions', 'Npcs'
         var controls;
         var THREE = null;
         var crateImage = null;
+        var wireFrame = null;
 
         var keyMove = {
             moveForward: false,
@@ -40,59 +41,6 @@ define(['floor', 'PointerLockControls', 'PointerLockSetup', 'Collisions', 'Npcs'
             renderer.setSize(window.innerWidth, window.innerHeight);
         }
 
-        /*
-         var onKeyDown = function(event) {
-
-         switch (event.keyCode) {
-
-         case 38: // up
-         case 87: // w
-         keyMove.moveForward = true;
-         break;
-
-         case 37: // left
-         case 65: // a
-         keyMove.moveLeft = true;
-         break;
-
-         case 40: // down
-         case 83: // s
-         keyMove.moveBackward = true;
-         break;
-
-         case 39: // right
-         case 68: // d
-         keyMove.moveRight = true;
-         break;
-         }
-         };
-
-         var onKeyUp = function(event) {
-
-         switch (event.keyCode) {
-
-         case 38: // up
-         case 87: // w
-         keyMove.moveForward = false;
-         break;
-
-         case 37: // left
-         case 65: // a
-         keyMove.moveLeft = false;
-         break;
-
-         case 40: // down
-         case 83: // s
-         keyMove.moveBackward = false;
-         break;
-
-         case 39: // right
-         case 68: // d
-         keyMove.moveRight = false;
-         break;
-         }
-         };
-         */
         function init() {
 
             var screenWidth = window.innerWidth / window.innerHeight;
@@ -110,7 +58,9 @@ define(['floor', 'PointerLockControls', 'PointerLockSetup', 'Collisions', 'Npcs'
             var floor = new Floor(THREE);
             floor.drawFloor(scene);
             collisions = new Collisions(THREE);
-            npcs = new Npcs();
+            npcs = new Npcs(THREE);
+            npcs.loadNPC(scene, camera, wireFrame);
+            console.log(npcs);
 
             raycaster = new THREE.Raycaster(new THREE.Vector3(),
                 new THREE.Vector3(0, -1, 0), 0, 10);
@@ -177,7 +127,11 @@ define(['floor', 'PointerLockControls', 'PointerLockSetup', 'Collisions', 'Npcs'
              color : 0x00ffff,
              wireframe : wireFrame
              });*/
-//comment
+            var dataReaders = new DataReaders();
+            dataReaders.readDatabase(function(docs) {
+                npcs.readNpcGrid(scene, wireFrame, docs);
+            });
+
             var loader = new THREE.TextureLoader();
 
             if (!crateImage) {
@@ -191,7 +145,6 @@ define(['floor', 'PointerLockControls', 'PointerLockSetup', 'Collisions', 'Npcs'
             var cube = new THREE.Mesh(geometry, material);
             cube.position.set(x, size / 2, z);
             scene.add(cube);
-
             cubes.push(cube);
 
             return cube;
@@ -208,23 +161,7 @@ define(['floor', 'PointerLockControls', 'PointerLockSetup', 'Collisions', 'Npcs'
                     }
                 }
             });
-
-            readDatabase();
-        }
-
-        function readDatabase() {
-            $.getJSON('/read?docName=npcsDoc', function(data) {
-                console.log(JSON.stringify(data.docs, null, 4));
-            }).fail(function(jqxhr, textStatus, error) {
-                var err = textStatus + ', ' + error;
-                console.log({
-                    'Request Failed': err
-                });
-                var response = JSON.parse(jqxhr.responseText);
-                var responseValue = JSON.stringify(response, null, 4);
-                console.log(responseValue);
-                alert('Database not connected' + responseValue);
-            });
+            npcs.createNpc(scene, camera, wireFrame, 2, -6);
         }
 
         function addLights() {

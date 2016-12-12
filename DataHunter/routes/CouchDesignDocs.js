@@ -1,7 +1,3 @@
-/**
- * New node file
- */
-
 function designDocs(router, nano, dbName) {
     'use strict';
 
@@ -29,13 +25,6 @@ function designDocs(router, nano, dbName) {
         }
     };
 
-    var docStateCapital = function(doc) {
-        emit(doc.abbreviation, {
-            'name': doc.name,
-            'capital': doc.capital
-        });
-    };
-
     var docNpcsDoc = function(doc) {
         if (doc._id === 'npcsDoc') {
             var data = [];
@@ -51,7 +40,14 @@ function designDocs(router, nano, dbName) {
     };
 
     /*
-    var viewStatesDoc = function(doc) {
+     var docStateCapital = function(doc) {
+     emit(doc.abbreviation, {
+     'name': doc.name,
+     'capital': doc.capital
+     });
+     };
+
+     var viewStatesDoc = function(doc) {
     	if (doc._id === 'statesDoc') {
     		var data = [];
     		doc.docs.forEach(function(state) {

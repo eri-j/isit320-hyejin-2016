@@ -8,7 +8,7 @@ var router = express.Router();
 var fs = require('fs');
 
 var servers = [
-    'http://168.156.47.142:5984',
+    'http://10.0.2.15:5984',
     'http://127.0.0.1:5984',
     'http://192.168.2.19:5984'
 ];
@@ -18,6 +18,103 @@ var nano = require('nano')(servers[serverIndex]);
 var dbName = 'game_data_jun';
 var docName = 'default_document_name';
 
+// NPCS
+router.post('/insert', function(req, res) {
+    console.log('Insert Called');
+
+    var npcData = {
+        npc_name: req.body.npc_name,
+        value: req.body.value,
+        question: req.body.question,
+        answer: req.body.answer
+    }
+
+    var db = nano.use(dbName);
+    db.insert(npcData, docName, function(err, result) {
+
+        if (err) {
+            res.send({
+                err: err
+            });
+        } else {
+            res.send({
+                message: 'Inserted '
+            });
+        }
+
+    });
+
+});
+
+router.get('/read', function(req, res) {
+    console.log('Read Called');
+
+    var db = nano.use(dbName);
+    db.list(function(err, result) {
+
+        console.log(result);
+
+        if (err) {
+            res.send({
+                err: err
+            });
+        } else {
+            res.send({
+                message: JSON.stringify(result)
+            });
+        }
+
+    });
+
+});
+
+router.get('/remove/:id', function(req, res) {
+    console.log('Remove ' + req.params.id + ' called');
+    res.send({
+        message: 'OK '
+    });
+});
+
+// Databases
+router.get('/create', function(req, res) {
+    console.log('Create called');
+
+    nano.db.create(dbName, function(err, result) {
+
+        if (err) {
+            res.send({
+                err: err
+            });
+        } else {
+            res.send({
+                message: 'Created '
+            });
+        }
+
+    });
+
+});
+
+router.get('/destroy', function(req, res) {
+    console.log('Destroy called');
+    nano.db.destroy(dbName, function(err, result) {
+
+        if (err) {
+            res.send({
+                err: err
+            });
+        } else {
+            res.send({
+                message: 'Destroyed '
+            });
+        }
+
+    });
+});
+
+module.exports = router;
+
+/*
 var insert = require('./CouchInsert')(router, nano, dbName);
 var views = require('./CouchViews')(router, nano, dbName);
 var designDocs = require('./CouchDesignDocs')(router, nano, dbName);
@@ -118,5 +215,4 @@ router.get('/docNames', function(request, response) {
         }
     });
 });
-
-module.exports = router;
+*/
