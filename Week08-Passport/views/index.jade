@@ -6,21 +6,28 @@ block content
       h1= title
       h2.text-muted= name
 
-      div
-        a(href='/facebook/login').btn.btn-primary.col-lg-12 Log In with Facebook
-      div
-        a(href="/facebook/profile").btn.btn-primary.col-lg-12 Facebook Profile
+      .panel.panel-default
+        .panel-heading Facebook | Google
+        .panel-body
 
-      div
-        a(href='/auth/google').btn.btn-primary.col-lg-12 Log In Google
-      div
-        a(href='/auth/account').btn.btn-primary.col-lg-12 Google Account
+          ul.nav.nav-pills.nav-stacked
+            li
+              a(href='/facebook/login').btn.btn-primary.col-lg-12 Log In with Facebook
+            li
+              a(href="/facebook/profile").btn.btn-primary.col-lg-12 Facebook Profile
+            li
+              a(href='/auth/google').btn.btn-primary.col-lg-12 Log In Google
+            li
+              a(href='/auth/account').btn.btn-primary.col-lg-12 Google Account
 
-      div
-        a(href='/logout').btn.btn-primary.col-lg-12 Logout
+      .panel.panel-default
+        .panel-heading Basics
+        .panel-body
+            div
+              a(href='/logout').btn.btn-primary.col-lg-12 Logout
 
-      button#status.btn.btn-danger.col-lg-12 Status
+            button#status.btn.btn-danger.col-lg-12 Status
 
-    div.col-lg-4
-        pre#report.col-lg-12 <*)))))><{ A fish
-        pre#debug.col-lg-12
+            div.col-lg-4
+                pre#report.col-lg-12 <*)))))><{ A fish
+                pre#debug.col-lg-12

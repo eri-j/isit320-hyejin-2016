@@ -5,13 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var session = require('express-session');
+var passport = require('passport');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var google = require('./routes/google-auth');
 var facebook = require('./routes/facebook');
-
-var session = require('express-session');
-var passport = require('passport');
 
 var app = express();
 
@@ -32,11 +32,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'keyboard cat',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    secure: false
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use('/', routes);
 app.use('/users', users);
 app.use('/auth', google);
